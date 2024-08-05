@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import Providers from "@/providers/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
+const nunito = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "NFT Marketplace",
@@ -11,15 +13,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Navigation />
-        {children}
+      <body className={`${inter.className} ${nunito.className}`}>
+        <Providers>
+          <>
+            <Navigation />
+            {children}
+          </>
+        </Providers>
       </body>
     </html>
   );
