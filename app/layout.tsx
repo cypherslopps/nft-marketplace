@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { headers } from "next/headers";
+import { cookieToInitialState, State } from "wagmi";
 import "./globals.css";
+import { config } from "./lib/ethereumConfig";
 import Navigation from "@/app/components/Navigation";
 import Providers from "@/app/providers/Providers";
 
@@ -19,10 +22,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialState = cookieToInitialState(config, headers().get("cookie"));
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
+        <Providers ethereumInitialState={initialState as State}>
           <>
             <Navigation />
             {children}

@@ -3,18 +3,23 @@
 import { FC, ReactElement} from 'react'
 import { ChainProvider } from './ChainProvider'
 import { ThemeProvider } from 'next-themes';
+import { EthereumProvider } from './EthereumProvider';
+import { State } from 'wagmi';
 
 interface IProviders {
-    children: ReactElement
+    children: ReactElement;
+    ethereumInitialState: State
 }
 
-const Providers: FC<IProviders> = ({ children }) => {
+const Providers: FC<IProviders> = ({ children, ethereumInitialState }) => {
   return (
-    <ChainProvider>
-        <ThemeProvider defaultTheme="dark">
+    <ThemeProvider defaultTheme="dark">
+      <ChainProvider>
+        <EthereumProvider initialState={ethereumInitialState}>
             {children}
-        </ThemeProvider>
-    </ChainProvider>
+        </EthereumProvider>
+      </ChainProvider>
+    </ThemeProvider>
   )
 }
 

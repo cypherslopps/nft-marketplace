@@ -6,3 +6,6 @@ interface IChain {
     title: ChainTypesProps;
     imageSource: StaticImageData | string
 }
+
+type IETHAddress = `0x${string}` | undefined
+type ThemeMode = "light" | "dark";
