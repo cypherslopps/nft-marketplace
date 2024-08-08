@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FC, useRef, MutableRefObject, RefObject, useEffect } from "react";
-import { navigationLinks } from "@/lib/constants";
+import { navigationLinks } from "@/app/lib/constants";
 import Icons from "./Icons";
 import WalletConnect from "./WalletConnect";
 import ChainMenu from "./ChainMenu";

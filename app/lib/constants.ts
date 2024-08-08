@@ -1,4 +1,4 @@
-import { IChain } from "..";
+import { IChain } from "../..";
 
 export const navigationLinks = [
     {

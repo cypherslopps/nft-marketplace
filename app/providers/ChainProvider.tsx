@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, FC, ReactElement, useContext, useState } from "react";
-import { IChain } from "..";
-import { chains } from "@/lib/constants";
+import { createContext, FC, ReactElement, useContext, useEffect, useState } from "react";
+import { IChain } from "../..";
+import { chains } from "@/app/lib/constants";
 
 interface IChainContext {
     chains: IChain[];
@@ -17,13 +17,24 @@ interface IChainProvider {
 const ChainContext = createContext<IChainContext | null>(null);
 
 export const ChainProvider: FC<IChainProvider> = ({ children }) => {
-    const storedChain = localStorage.getItem("active_chain");
-    const currentActiveChain: IChain | undefined = storedChain ? chains.find(chain => chain.title === storedChain) : chains[0];
-    const [activeChain, setActiveChain] = useState<IChain>(currentActiveChain as IChain);
+    const [activeChain, setActiveChain] = useState<IChain>(chains[0]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const storedChain = window.localStorage.getItem("active_chain");
+            const currentActiveChain: IChain | undefined = storedChain ? chains.find(chain => chain.title === storedChain) : chains[0];
+            
+            // Set Active chain
+            setActiveChain(currentActiveChain as IChain);
+        }
+    }, []);
 
     const updateActiveChain = (chain: IChain) => {
         setActiveChain(chain)
-        localStorage.setItem("active_chain", chain.title);
+        
+        if (typeof window !== "undefined") {
+            window.localStorage.setItem("active_chain", chain.title);
+        }
     }
 
     return (

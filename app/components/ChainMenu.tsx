@@ -1,7 +1,7 @@
-import { useChain } from '@/providers/ChainProvider'
+import { useChain } from '@/app/providers/ChainProvider'
 import Image, { StaticImageData } from 'next/image';
 import React, { FC, useState } from 'react'
-import { ChainTypeProps } from '..';
+import { ChainTypeProps } from '../..';
 
 interface IChainMenuItem {
   title: ChainTypeProps;

@@ -1,11 +1,9 @@
-import Link from 'next/link'
- 
-export default function NotFound() {
+import React from 'react'
+
+const NotFound = () => {
   return (
-    <div>
-      <h2>Not Found</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
-    </div>
+    <div>NotFound</div>
   )
 }
+
+export default NotFound
