@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Nunito } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Providers from "@/providers/Providers";
 
-const inter = Inter({ subsets: ["latin"] });
-const nunito = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: "--font-inter"
+});
 
 export const metadata: Metadata = {
   title: "NFT Marketplace",
@@ -19,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${nunito.className}`}>
+      <body className={inter.className}>
         <Providers>
           <>
             <Navigation />

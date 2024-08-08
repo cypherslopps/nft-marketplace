@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, FC, ReactElement, useContext, useState } from "react";
 import { IChain } from "..";
 import { chains } from "@/lib/constants";

@@ -6,6 +6,7 @@ import { navigationLinks } from "@/lib/constants";
 import Icons from "./Icons";
 import WalletConnect from "./WalletConnect";
 import ChainMenu from "./ChainMenu";
+import ThemeToggler from "./ThemeToggler";
 
 interface INavigationLinks {
     title: string;
@@ -70,6 +71,7 @@ const Navigation = () => {
                 <Icons.search className="w-5 h-5" />
                 <WalletConnect />
                 <ChainMenu />
+                <ThemeToggler />
             </div>
         </nav>
     );
