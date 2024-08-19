@@ -37,7 +37,10 @@ const ChainMenu = () => {
 
   return (
     <div className='relative'>
-      <div className='flex items-center justify-center gap-x-1.5 cursor-pointer transition-colors duration-500 hover:bg-gray-800 rounded-md py-0.5 px-1.5'>
+      <div 
+        className='flex items-center gap-x-1.5 cursor-pointer transition-colors duration-500 hover:bg-gray-800 rounded-md py-0.5 px-1.5 w-20'
+        onClick={() => setIsMenuOpen(prev => !prev)}
+      >
         <Image 
           src={activeChain.imageSource}
           alt={activeChain.title}
@@ -47,11 +50,11 @@ const ChainMenu = () => {
           height={150}
         />
 
-        <span className='text-sm'>{activeChain.title}</span>
+        <span className='text-sm uppercase'>{activeChain.title.substr(0, 3)}</span>
       </div>
 
       {isMenuOpen ? (
-        <div className='absolute flex flex-col gap-y-1'>
+        <div className='absolute top-[2.8rem] flex flex-col gap-y-1 w-40 z-50'>
           {chains.map(chain => (
             <ChainMenuItem 
               key={chain.title}

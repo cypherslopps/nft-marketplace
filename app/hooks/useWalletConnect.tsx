@@ -2,17 +2,25 @@ import { useWeb3Modal } from '@web3modal/wagmi/react';
 import { useChain } from '../providers/ChainProvider';
 import { useAccount, useDisconnect } from 'wagmi';
 import { IETHAddress } from '@/index';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 const useWalletConnect = () => {
+    // Ethereum
     const { open } = useWeb3Modal();
     const { address, isConnecting } = useAccount();
     const { disconnect } = useDisconnect();
+
+    // Solana
+    const { connect, disconnect: disconnectSolanaWallet, } = useWallet();
+
     const { activeChain } = useChain();
 
     // Connect user wallet
-    const connect = () => {
+    const connectWallet = () => {
         if (activeChain.title === "Ethereum") {
             open();
+        } else if (activeChain.title === "Solana") {
+            connect();
         }
     }
 
@@ -20,6 +28,8 @@ const useWalletConnect = () => {
     const disconnectWallet = () => {
         if (activeChain.title === "Ethereum") {
             disconnect();
+        } else if (activeChain.title === "Solana") {
+            disconnectSolanaWallet();
         }
     }
 
@@ -31,7 +41,7 @@ const useWalletConnect = () => {
     }
 
     return {
-        connect,
+        connect: connectWallet,
         isConnecting,
         disconnect: disconnectWallet,
         address: userAddress()

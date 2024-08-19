@@ -10,8 +10,8 @@ export const navigationLinks = [
         route: "/discover"
     },
     {
-        title: "collections",
-        route: "/collections"
+        title: "categories",
+        route: "/categories"
     }
 ];
 

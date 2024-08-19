@@ -1,9 +1,8 @@
 import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 import { cookieStorage, createStorage } from "wagmi";
-import { mainnet, sepolia } from "wagmi/chains";
+import { sepolia } from "wagmi/chains";
 
 export const projectId = process.env.NEXT_PUBLIC_WEB3CONNECT_PROJECT_ID;
-console.log(projectId);
 
 if (!projectId) {
     throw new Error("Project ID is not defined");
@@ -17,7 +16,7 @@ export const metadata = {
 };
 
 // Wagmi Config
-const chains = [mainnet, sepolia] as const;
+const chains = [sepolia] as const;
 export const config = defaultWagmiConfig({
     chains,
     projectId,

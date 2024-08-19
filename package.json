@@ -11,6 +11,10 @@
   "dependencies": {
     "@orbs-network/ton-access": "^2.3.3",
     "@remixicon/react": "^4.2.0",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "@solana/web3.js": "^1.95.2",
     "@tanstack/react-query": "^5.51.21",
     "@ton/ton": "^14.0.0",
     "@tonconnect/ui-react": "^2.0.6",

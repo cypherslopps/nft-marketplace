@@ -22,7 +22,9 @@ const config: Config = {
     },
     extend: {
       fontSize: {
-        md: [".94rem", "1.3"]
+        md: [".94rem", "1.3"],
+        ms: [".92rem", "1.1"],
+        xs: [".75rem", "1.2"]
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

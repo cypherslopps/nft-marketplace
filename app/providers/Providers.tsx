@@ -5,6 +5,7 @@ import { ChainProvider } from './ChainProvider'
 import { ThemeProvider } from 'next-themes';
 import { EthereumProvider } from './EthereumProvider';
 import { State } from 'wagmi';
+import { SolanaWalletProvider } from './SolanaProvider';
 
 interface IProviders {
     children: ReactElement;
@@ -15,9 +16,11 @@ const Providers: FC<IProviders> = ({ children, ethereumInitialState }) => {
   return (
     <ThemeProvider defaultTheme="dark">
       <ChainProvider>
-        <EthereumProvider initialState={ethereumInitialState}>
-            {children}
-        </EthereumProvider>
+        <SolanaWalletProvider>
+          <EthereumProvider initialState={ethereumInitialState}>
+              {children}
+          </EthereumProvider>
+        </SolanaWalletProvider>
       </ChainProvider>
     </ThemeProvider>
   )

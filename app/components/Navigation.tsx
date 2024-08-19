@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FC, useRef, MutableRefObject, RefObject, useEffect } from "react";
+import { FC } from "react";
 import { navigationLinks } from "@/app/lib/constants";
 import Icons from "./Icons";
 import WalletConnect from "./WalletConnect";
@@ -14,32 +14,13 @@ interface INavigationLinks {
 }
 
 const NavigationLinks: FC<INavigationLinks> = ({ title, route }) => {
-    const linkRef: RefObject<HTMLAnchorElement> = useRef() as RefObject<HTMLAnchorElement>;
-    let rect: MutableRefObject<DOMRect | undefined> = useRef() as MutableRefObject<DOMRect | undefined>;
-   
-    useEffect(() => {
-        rect.current = linkRef?.current?.getBoundingClientRect();
-        console.log(rect)
-    }, [])
-
     return (
         <li>
             <Link
-                ref={linkRef}
                 href={route}
                 className="capitalize relative text-md text-white/85"
             >
                 {title}
-                {rect?.current ? (
-                    <div 
-                        className="absolute bg-red-50"
-                        style={{
-                            left: `${(rect?.current?.left as number) - 12}%`,
-                            top: `${(rect?.current?.top as number) - 12}%`,
-                            width: `${rect?.current?.width}%`,
-                            height: `${rect?.current?.height}%`
-                        }}
-                 />) : null}
             </Link>
         </li>
     )
